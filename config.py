@@ -133,6 +133,8 @@ DQN_arg.add_argument('--ifDecayAdam', type=str2bool, default=True, help='decays 
 DQN_arg.add_argument('--decayStep', type=int, default=10000, help='the decay step of the learning rate')
 DQN_arg.add_argument('--decayRate', type=float, default=0.98, help='the rate to reduce the lr at every decayStep')
 
+DQN_arg.add_argument('--DQNckpt', type=str, default='./checkpoint')
+
 DQN_arg.add_argument('--display', type=int, default=1000, help='the number of iterations between two display of results.')
 DQN_arg.add_argument('--momentum', type=float, default=0.9, help='the momentum value')
 DQN_arg.add_argument('--dnnUpCnt', type=int, default=10000, help='the number of iterations that updates the dnn weights')

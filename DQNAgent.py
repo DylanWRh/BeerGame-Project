@@ -1,4 +1,5 @@
 import torch
+import os
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
@@ -73,8 +74,9 @@ class DQNAgent:
         self.optimizer.step()
 
         # Step 4: Save the network
+        os.makedirs(self.config.DQNckpt, exist_ok=True)
         if (self.timeStep + 1) % self.config.saveInterval == 0:
-            torch.save(self.QNet.state_dict(), f'./checkpoint/model-{self.timeStep}.pt')
+            torch.save(self.QNet.state_dict(), os.path.join(self.config.DQNckpt, f'model-{self.timeStep}.pt'))
             print("Network weights are saved")
         if self.timeStep % self.config.dnnUpCnt == 0:
             self.copyTargetQNetwork()
